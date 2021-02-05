@@ -25,15 +25,16 @@ but, as you can see, this package name is AllowInsecurePrototypeAccess
 ```
 #### connect-flash를 사용해서 메시지 남기기, 
 * 굳이 flash 로 메시지를 전달해야 하는 이유는, 어쩌면 당연하다고 생각할 수있지만, 세션을 이용해서 user의 활동을 더욱 정밀하게 관리하기 위함이다. 
-* http 프로토콜을 stateless 특징을 가지고 있기 때문에, 들어온 요청에 대해서, 서버는 요청이 누구로 부터 들어온 요청인지 알수가 없다. 이 때 세션을 이용해서 유저를 더욱 더 섬세하게 관리할 수가 있다. 
-***example***
+* http 프로토콜을 stateless 특징을 가지고 있기 때문에, 들어온 요청에 대해서, 서버는 요청이 누구로 부터 들어온 요청인지 알수가 없다. 이 때 세션을 이용해서 유저를 더욱 더 섬세하게 관리할 수가 있다.
+
+
+ 
+####example
 ```
 
 app.post("/signup", (req, res)=>{
 // 유저가 존재하는 아이디로 회원가입을 시도해서 실패, 회원가입페이지로 리다이렉션 된다.
 	...
-	
-	
 })
 
 app.get("/signup", (req,res)=>{
@@ -42,15 +43,10 @@ app.get("/signup", (req,res)=>{
 	lst params = {msg: "this account exists!"}
 	res.render("/loginPage", params)
     
-    
     // flash 메시지(세션기반)을 사용한경우
     // 설정한 세션 타임이 만료되지 않았다는 전제하에, 서버는 방금 요청을 보낸 사용자가, 방금 회원가입에 실패한 사용자라는 것을 식별할 수 있다. 
 	lst params = {msg: req.flash("error_msg")};
 	res.render("/loginPage", params)
-
-
-
-
     
 })
 ```
