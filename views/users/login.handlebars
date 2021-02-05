@@ -1,0 +1,30 @@
+{{>_breadCrump}}
+<h3 class="mb-3">Let us know who you are</h3>
+<div class="card">
+    <h5 class="card-header">Log in</h5>
+    <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        {{#if msg}}
+            <div class="alert alert-danger">{{msg}}</div>
+        {{/if}}
+        <form action="/users/login" method="post">
+            <div class="mb-3">
+                <label for="mail" class="form-label">Email address</label>
+                <input required type="email" name="email" class="form-control" id="mail" aria-describedby="emailHelp">
+                <div class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input required type="password" name="password" class="form-control" id="password">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="savepassword">
+                <label class="form-check-label" for="savepassword">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-success">Submit</button>
+            <a href="/users/register" class="btn btn-warning">register</a>
+
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        </form>
+    </div>
+</div>
