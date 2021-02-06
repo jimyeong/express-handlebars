@@ -14,7 +14,6 @@ router.get("/login", (req, res) => {
     let state = {};
     state.page = "login"
     state.error_msg = req.flash("message");
-    console.log(state.error);
     // 로그인 페이지
     res.render("users/login", state);
 })
