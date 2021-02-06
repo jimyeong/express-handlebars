@@ -2,22 +2,29 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+
+const passport = require("passport");
+require("../config/passport")(passport);
+
 require("../models/users");
 const User = mongoose.model("user");
 
 
 router.get("/login", (req, res) => {
-    let params = {};
-    params.page = "login"
+    let state = {};
+    state.page = "login"
+    state.error = req.flash("message");
+    console.log(state.error);
     // 로그인 페이지
-    res.render("users/login", params);
+    res.render("users/login", state);
 })
 
-router.post("/login", (req, res) => {
-    // 로그인 이후 처리
-
-
-})
+router.post("/login", passport.authenticate("local",
+    {
+        successRedirect: '/',
+        failureRedirect: '/users/login',
+        failureFlash:true
+    }))
 
 
 router.get("/register", (req, res) => {
@@ -72,7 +79,8 @@ router.post("/register", (req, res) => {
                 // flash message save
                 req.flash("error_msg", "this accounts already exists");
                 res.redirect("/users/register")
-            };
+            }
+            ;
 
             if (!isDuplicatedId) {
                 bcrypt.genSalt(10, (err, salt) => {
@@ -94,4 +102,21 @@ router.post("/register", (req, res) => {
     // redirection to login
 })
 
+// personal info edit!
+router.put("/mypage/:id", (req,res)=>{
+    let state = {};
+    state.user = req.user;
+    res.render("users/mypage", state);
+    let config =[];
+    config.push(state)
+    // 주소는 담을 필요 없다, 주소 안에 있는 내용이 담길 뿐
+
+})
+
+// logout
+router.get("/logout", (req, res)=>{
+    req.flash("message", "it has logged out successfully!");
+    req.logout();
+    res.redirect("/");
+})
 module.exports = router;

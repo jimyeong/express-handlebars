@@ -5,8 +5,7 @@ const _handlebars = require("handlebars");
 const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
 const session = require("express-session");
 const flash = require("connect-flash");
-
-
+const passport = require("passport");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
@@ -56,25 +55,37 @@ app.use(session({
     secret: "jimmy",
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 1000 * 10 }
+    cookie: { maxAge: 1000 * 60 }
 }));
 app.use(flash());
+
+// express에 셋팅
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
 
-// bodyparser
-// app.use();
-
-// connect handlebar
-
-// session
+// global variables!
+app.use(function (req, res,next) {
+    res.locals.success_msg = req.flash("success_msg");
+    res.locals.error_msg = req.flash("error_msg");
+    res.locals.error = req.flash("error");
+    res.locals.user = req.user || null;
+    next();
+})
 
 app.get("/", (req, res) => {
-    const title = "welcome"
-    res.render("index", {title: title});
-
+    // a||b a가 true면 a 를 반환, 아니면 b를 반환
+    const state = {};
+    const title = "hi there:)"
+    state.title = title;
+    state.message = req.flash("message");
+    state.user = req.user;
+    console.log(state);
+    res.render("index", state);
 })
 
 app.get("/about", (req, res) => {

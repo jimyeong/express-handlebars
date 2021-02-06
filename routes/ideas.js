@@ -31,7 +31,6 @@ router.get("/edit/:id", (req, res)=>{
             */
            if(idea){
                // edit/ 쓰면 틀린다.
-               console.log(idea);
                res.render("ideas/edit", idea);
            }
        }
@@ -92,14 +91,14 @@ router.post("/", (req, res)=>{
         });
     }else{
         /**
-         * @here
+
          * 로그인하면 이름 채워 넣을것
          * @type {{detail: ({type: StringConstructor, required: boolean}|T|number|T), title: string | {type: *, required: boolean}, user: string}}
          */
         const newIdea = {
             title: req.body.title,
             detail: req.body.detail,
-            user: "jimmy"
+            user: req.username
         }
         new Idea(newIdea)
             .save()

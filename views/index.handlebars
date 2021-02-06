@@ -1,6 +1,13 @@
+{{#if message}}
+    <div class="alert alert-success">{{message}}</div>
+{{/if}}
 <div class="jumbotron text-center">
     <h1 class="display-3">
-        {{title}}
+        {{#if user}}
+            {{title}} {{user.username}}
+        {{else}}
+            {{title}}, please login!
+        {{/if}}
     </h1>
     <p class="lead">Jot down ideas for your next YouTube video</p>
     <a href="/ideas/add" class="btn btn-dark btn-lg">
