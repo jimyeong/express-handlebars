@@ -2,13 +2,11 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
-
 const passport = require("passport");
 require("../config/passport")(passport);
-
 require("../models/users");
 const User = mongoose.model("user");
-
+const {checkIfAuthenticated} = require("../helper/auth");
 
 router.get("/login", (req, res) => {
     let state = {};
@@ -22,7 +20,7 @@ router.post("/login", passport.authenticate("local",
     {
         successRedirect: '/',
         failureRedirect: '/users/login',
-        failureFlash:true
+        failureFlash: true
     }))
 
 
@@ -102,18 +100,18 @@ router.post("/register", (req, res) => {
 })
 
 // personal info edit!
-router.put("/mypage/:id", (req,res)=>{
+router.put("/mypage/:id", checkIfAuthenticated, (req, res) => {
     let state = {};
     state.user = req.user;
     res.render("users/mypage", state);
-    let config =[];
+    let config = [];
     config.push(state)
     // 주소는 담을 필요 없다, 주소 안에 있는 내용이 담길 뿐
 
 })
 
 // logout
-router.get("/logout", (req, res)=>{
+router.get("/logout", (req, res) => {
     req.flash("message", "it has logged out successfully!");
     req.logout();
     res.redirect("/");

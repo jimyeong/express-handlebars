@@ -5,7 +5,7 @@
         <p><span class="fs-6">Detail: </span>{{detail}}</p>
         <div class="date">Date: {{date}}</div>
         <a href="/ideas/edit/{{id}}" class="btn btn-success btn-block mb-2">Edit</a>
-        <form action="/ideas/{{id}}?_method=DELETE" method="post">
+        <form action="/ideas/delete/{{id}}?_method=DELETE" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input type="submit" class="btn btn-danger btn-block" value="DELETE">
         </form>
