@@ -24,6 +24,7 @@
   "devDependencies": {
     "@handlebars/allow-prototype-access": "^1.0.3",
     "bcryptjs": "^2.4.3",
-    "mongoose": "^5.11.14"
+    "mongoose": "^5.11.14",
+    "passport-kakao": "^1.0.1"
   }
 }
