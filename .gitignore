@@ -1,4 +1,6 @@
-/.git
-/node_modules/
-/.idea/
-/config/*
+.gitignore
+.git
+node_modules
+.idea
+config/
+

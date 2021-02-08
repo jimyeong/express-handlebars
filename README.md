@@ -52,3 +52,7 @@ $ git branch -d <branchname>
 //reflect deleted branch to the remote branches
 $ git push [remote] :<deleted branch name>
 ```
+
+###.gitignore 작성방법
+참조: https://shilan.tistory.com/entry/gitignore-%ED%8C%8C%EC%9D%BC-%EC%9E%91%EC%84%B1-%EA%B7%9C%EC%B9%99
+
