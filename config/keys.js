@@ -11,7 +11,7 @@ const sessionConfig = {
     cookie: {maxAge: 1000 * 180}
 }
 
-
+// kakao keys
 let config = {
     kakao: kakaoKeys,
     sessionConfig: sessionConfig
