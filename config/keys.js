@@ -14,7 +14,7 @@ const sessionConfig = {
 
 let config = {
     kakao: kakaoKeys,
-    sessionConfig: sessionConfig;
+    sessionConfig: sessionConfig
 }
 
 module.exports = config;
