@@ -1,51 +1,45 @@
-.btn-block {
+
+.btn-block{
   width: 100%;
 }
-
 /*social btns*/
-.social-login__buttons {
+.social-login__buttons{
   list-style: none;
 }
+.social-btn{
 
-.social-btn {
   display: block;
   margin: 0 auto;
   text-align: center;
   padding: 14px 12px;
-  box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px 1px rgba(0,0,0,0.1);
   min-width: 290px;
 }
-
-.btn-kakao {
+.btn-kakao{
   background-color: #FFE500;
 }
-
-.btn-naver {
+.btn-naver{
   background-color: #18CE5F;
   color: #fff;
 }
-
-.btn-google {
+.btn-google{
   background-color: #E14A32;
   color: #fff;
-}
 
-.social-login__buttons {
+}
+.social-login__buttons{
   display: flex;
   justify-content: space-around;
   flex-wrap: nowrap;
   padding: 12px 12px;
   margin: 0px;
 }
-
-.social-login__icon {
+.social-login__icon{
   width: 29px;
   height: 29px;
 }
-
-a {
-  color: #666;
-  text-decoration: none;
+.social-login__button{
 }
+.social-login__button + .social-login__button{
 
-/*# sourceMappingURL=style.css.map */
+}

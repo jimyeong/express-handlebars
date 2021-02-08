@@ -1,0 +1,23 @@
+.btn-block {
+  width: 100%;
+}
+
+/*social btns*/
+.social-login__buttons {
+  list-style: none;
+}
+
+.social-btn {
+  min-width: 120px;
+  display: block;
+  margin: 0 auto;
+}
+.social-btn.btn-kakao {
+  background-color: #ffcc36;
+}
+
+.social-btn + .social-btn {
+  margin-top: 8px;
+}
+
+/*# sourceMappingURL=buttons.css.map */

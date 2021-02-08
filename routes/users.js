@@ -3,10 +3,12 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-require("../config/passport")(passport);
+require("../passport/passport")(passport);
 require("../models/users");
 const User = mongoose.model("user");
 const {checkIfAuthenticated} = require("../helper/auth");
+
+
 
 router.get("/login", (req, res) => {
     let state = {};

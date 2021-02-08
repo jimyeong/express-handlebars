@@ -3,7 +3,6 @@
 ### 핸들바 4.6 > version  이상부터는 보안이슈로 attribute로 접근 안됨
 * 그래서 handlebars/allow-prototype-access 를 설치했음, 
 * 참조 : https://stackoverflow.com/questions/59690923/handlebars-access-has-been-denied-to-resolve-the-property-from-because-it-is/59704492#59704492, https://handlebarsjs.com/api-reference/runtime-options.html#options-to-control-prototype-access
-
 ```
 // app.js
 const exphbs = require("express-handlebars");
@@ -23,11 +22,6 @@ since the reason it had became unavailable was due to kinda insecurity problems.
 but, as you can see, this package name is AllowInsecurePrototypeAccess
  
 ```
-#### connect-flash를 사용해서 메시지 남기기, 
-* 굳이 flash 로 메시지를 전달해야 하는 이유는, 어쩌면 당연하다고 생각할 수있지만, 세션을 이용해서 user의 활동을 더욱 정밀하게 관리하기 위함이다. 
-* http 프로토콜을 stateless 특징을 가지고 있기 때문에, 들어온 요청에 대해서, 서버는 요청이 누구로 부터 들어온 요청인지 알수가 없다. 이 때 세션을 이용해서 유저를 더욱 더 섬세하게 관리할 수가 있다.
-
-
  
 ####example
 ```
@@ -51,4 +45,10 @@ app.get("/signup", (req,res)=>{
 })
 ```
 
-####italki결제프로세스도 세션을 이용하는 것 같다. 세션 만료 전에는, 결제해도, 수강평을 남겨도 비밀번호를 묻지 않는다.
+```
+// local branch delete 
+$ git branch -d <branchname>
+
+//reflect deleted branch to the remote branches
+$ git push [remote] :<deleted branch name>
+```

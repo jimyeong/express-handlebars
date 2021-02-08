@@ -8,6 +8,8 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const config = require("./config/keys");
+
 
 const port = 5000;
 const path = require("path");
@@ -15,6 +17,8 @@ const path = require("path");
 // routes
 const ideas = require("./routes/ideas");
 const users = require("./routes/users");
+const oauth = require("./routes/oauth");
+
 
 
 const app = express();
@@ -51,12 +55,7 @@ app.set("view engine", "handlebars");
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "/public")));
-app.use(session({
-    secret: "jimmy",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { maxAge: 1000 * 180 }
-}));
+app.use(session(config.sessionConfig));
 app.use(flash());
 
 // express에 셋팅
@@ -95,6 +94,7 @@ app.get("/about", (req, res) => {
 // ideas route set up
 app.use("/ideas", ideas);
 app.use("/users", users);
+app.use("/oauth", oauth);
 
 // users routes set up
 // app.use("/users", users);
