@@ -1,21 +1,41 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
-
-const userKakaoSchema = new Schema({
-    id:{
-        type:String,
-        required:true
-    },
-    _raw:{
+// provider,email,username,displayName,avatar,id
+const UserKakaoSchema = new Schema({
+    provider: {
         type: String,
         required: true
+    },
+    email: {
+        type: String,
+
+    },
+    username: {
+        type: String,
+        required: true
+    },
+    displayName: {
+        type: String,
+
+    },
+    avatar: {
+        type: String,
+    },
+    id: {
+        type: String,
+        required: true
+    },
+    _raw: {
+        type: String,
     },
     _json: {
         type: String,
-        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 })
 
 
-mongoose.model("kakaoUser", userKakaoSchema);
+// mongoose.model("kakaoUser", UserKakaoSchema);

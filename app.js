@@ -64,6 +64,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+
 // override with POST having ?_method=DELETE
 app.use(methodOverride('_method'))
 
@@ -83,7 +84,7 @@ app.get("/", (req, res) => {
     state.title = title;
     state.message = req.flash("message");
     state.user = req.user;
-    console.log(state);
+    console.log("state: ", state);
     res.render("index", state);
 })
 

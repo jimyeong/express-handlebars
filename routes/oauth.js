@@ -8,15 +8,22 @@ require("../passport/passport-kakao")(passport);
 // const query = `${HOST}/oauth/authorize?client_id=${passport.kakao.clientID}&redirect_uri=${passport.callbackURL}&response_type=code HTTP/1.1`
 
 // kakao login
-router.get("/kakao", passport.authenticate("kakao"));
+router.get("/kakao", passport.authenticate("kakao", {
+    successRedirect: "/",
+    failureRedirect: '/',
+}), ()=>{
+    console.log("authenticate my key");
+});
 
 // 내가 로그인 구현할 때는 post 로 날렸지만
 // 카카오에서 데이터 보내줄 떄는 get으로 온다.
 router.get("/", passport.authenticate("kakao", {
     successRedirect: "/",
-    failureRedirect: "/users/login",
+    failureRedirect: "/",
     failureFlash: true
-}));
+}), () => {
+    console.log("user callback")
+});
 
 
 module.exports = router;
