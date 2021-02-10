@@ -9,9 +9,6 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const config = require("./config/keys");
-
-
-
 const path = require("path");
 
 // routes
@@ -27,21 +24,14 @@ const app = express();
 // 전역 스코프에 등록하고 싶은 게 있으면
 // req.locals 에 등록하면 된다.
 
-//  굳이 왜 거기 등록했는 지 모르겠네.
 
-if (app.get("env") === "development") {
-
-    // mongodb connected
-    mongoose.connect(db.mongoURI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }).then(() => {
-        console.log("mongo db is connected")
-    }).catch(err => console.log("error: " + err));
-}
-if (app.get("env") !== "development") {
-
-}
+// mongodb connected
+mongoose.connect(db.mongoURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log("mongo db is connected")
+}).catch(err => console.log("error: " + err));
 
 // handlebars setting
 let hbs = exphbs.create({
