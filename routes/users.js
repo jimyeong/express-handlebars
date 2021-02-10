@@ -3,12 +3,10 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-// require("../passport/passport")(passport);
+require("../passport/passport")(passport);
 require("../models/users");
 const User = mongoose.model("user");
 const {checkIfAuthenticated} = require("../helper/auth");
-
-
 
 router.get("/login", (req, res) => {
     let state = {};
@@ -24,7 +22,6 @@ router.post("/login", passport.authenticate("local",
         failureRedirect: '/users/login',
         failureFlash: true
     }))
-
 
 router.get("/register", (req, res) => {
     // 회원가입 패이지

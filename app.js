@@ -11,7 +11,7 @@ const bodyParser = require("body-parser");
 const config = require("./config/keys");
 
 
-const port = 5000;
+
 const path = require("path");
 
 // routes
@@ -20,6 +20,7 @@ const users = require("./routes/users");
 const oauth = require("./routes/oauth");
 
 
+const db = require("./config/database");
 
 const app = express();
 
@@ -31,7 +32,7 @@ const app = express();
 if (app.get("env") === "development") {
 
     // mongodb connected
-    mongoose.connect("mongodb://localhost/jimmy-vidjot-dev", {
+    mongoose.connect(db.mongoURI, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
@@ -100,7 +101,7 @@ app.use("/oauth", oauth);
 // users routes set up
 // app.use("/users", users);
 
-
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`server is running on port: ${port}`);
 })
