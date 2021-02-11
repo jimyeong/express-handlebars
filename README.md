@@ -53,6 +53,17 @@ $ git branch -d <branchname>
 $ git push [remote] :<deleted branch name>
 ```
 
-###.gitignore 작성방법
-참조: https://shilan.tistory.com/entry/gitignore-%ED%8C%8C%EC%9D%BC-%EC%9E%91%EC%84%B1-%EA%B7%9C%EC%B9%99
+### 10th Jan 2021
+에러를 못찾겠다. 매달리고 있기가 좀 그래서 nodejs 강좌 계속듣는중, 강좌듣는 중에 헤로쿠 막혔다.
+배포가 안된다. 이유를 못찾겠다., 왜 passport 안에서 계속 몽고디비를 코드가 사용되는 걸까, 나는 다른곳으로 라우팅 했는다.
+[해결방안] : 
+
+
+### 11th Jan 2021
+어제 못찾던 헤로쿠 관련 에러를 찾았다. 가장 기본적인 셋팅을 반복하면서
+어떤 factor가 바뀔 때, 빌드가 망가지는 지 찾았다. 꼬박 2시간정도 삽질 한 것 같다.
+[원인]: devDependencies로 설치한 서드파티 라이브러리들이 몇개 있는 데, 배포서버에서는, 이 모듈이 install 되지 않는 듯 하다.  
+[해결방안] : devDependencies에는 개발자에게 도움이 되는 third-party라이브러리 만 넣는다. 
+
+
 
