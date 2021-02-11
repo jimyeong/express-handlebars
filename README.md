@@ -22,28 +22,6 @@ since the reason it had became unavailable was due to kinda insecurity problems.
 but, as you can see, this package name is AllowInsecurePrototypeAccess
  
 ```
- 
-####example
-```
-
-app.post("/signup", (req, res)=>{
-// 유저가 존재하는 아이디로 회원가입을 시도해서 실패, 회원가입페이지로 리다이렉션 된다.
-	...
-})
-
-app.get("/signup", (req,res)=>{
-    // flash 메시지(세션기반)을 사용하지 않은경우
-    //서버는 get요청을 보낸 사용자가 회원가입에 실패한 사용자인지, 새로 유입된 사용자인지 식별이 불가능하다. -> 들어오는 사용자마다 this account already exists 메시지를 보게 된다. 
-	lst params = {msg: "this account exists!"}
-	res.render("/loginPage", params)
-    
-    // flash 메시지(세션기반)을 사용한경우
-    // 설정한 세션 타임이 만료되지 않았다는 전제하에, 서버는 방금 요청을 보낸 사용자가, 방금 회원가입에 실패한 사용자라는 것을 식별할 수 있다. 
-	lst params = {msg: req.flash("error_msg")};
-	res.render("/loginPage", params)
-    
-})
-```
 
 ```
 // local branch delete 
