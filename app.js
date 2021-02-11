@@ -24,8 +24,6 @@ const app = express();
 
 // 전역 스코프에 등록하고 싶은 게 있으면
 // req.locals 에 등록하면 된다.
-
-
 // mongodb connected
 mongoose.connect(db.mongoURI, {
     useNewUrlParser: true,
