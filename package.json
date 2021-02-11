@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "deploy": "git add .; git commit -m \"deploy\"; git push origin master; git push heroku master",
+    "server": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
