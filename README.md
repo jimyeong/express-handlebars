@@ -29,6 +29,18 @@ $ git branch -d <branchname>
 
 //reflect deleted branch to the remote branches
 $ git push remote :<deleted branch name>
+
+
+// config 파일이 실수로 올라갔다. ignore 파일에 뒤늦게 추가했는데, 이미 올라간 파일은 삭제가 안된다. -> 서버애서 지웠더니, pull을 해서 conflict 를 해결했다.
+// 그런데 드는 생각 만약에, 이렇게 실수해서 서버에서 급하게 파일을 지운경우, pull 을해서 실수로 중요한 파일이 쥐도 새로 모르게 날라갈 수도 있지 않나..?
+// 그럴 떈 이렇게, 
+// 폴더와 하위에 있는 모든 파일|폴더 삭제한다.
+$ git rm --cached -r <folderName> // --cached 옵션은, 원격 파일을 지울 떄 쓴다. -r 은 recursive 의 약자겠지
+$ git status
+$ git push <servername> <branchname>
+
+$git rm <파일이름> // local 파일 지울떄 쓴다.
+
 ```
 
 ### 10th Jan 2021
@@ -39,8 +51,6 @@ $ git push remote :<deleted branch name>
 ### 11th Jan 2021
 어제 못찾던 헤로쿠 관련 에러를 찾았다. 가장 기본적인 셋팅을 반복하면서
 어떤 factor가 바뀔 때, 빌드가 망가지는 지 찾았다. 꼬박 2시간정도 삽질 한 것 같다.
-config 파일이 실수로 올라갔다. ignore 파일에 뒤늦게 추가했는데, 이미 올라간 파일은 삭제가 안된다. -> 서버애서 지웠더니, pull을 해서 conflict 를 해결했다.
-**그런데 드는 생각** 만약에, 이렇게 실수해서 서버에서 급하게 파일을 지운경우, pull 을해서 실수로 중요한 파일이 쥐도 새로 모르게 날라갈 수도 있지 않나..?   
 
 **[원인]**: devDependencies로 설치한 서드파티 라이브러리들이 몇개 있는 데, 배포서버에서는, 이 모듈이 install 되지 않는 듯 하다.   
 **[해결방안]** : devDependencies에는 개발자에게 도움이 되는 third-party라이브러리 만 넣는다.    
