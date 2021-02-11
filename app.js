@@ -2,7 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const methodOverride = require("method-override");
 const _handlebars = require("handlebars");
-//const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
+const {allowInsecurePrototypeAccess} = require("@handlebars/allow-prototype-access");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
@@ -34,7 +34,7 @@ mongoose.connect(db.mongoURI, {
 
 // handlebars setting
 let hbs = exphbs.create({
-  //   handlebars: allowInsecurePrototypeAccess(_handlebars),
+   handlebars: allowInsecurePrototypeAccess(_handlebars),
     helpers: require("./helper/handlebarsHelper")(_handlebars)
 })
 
