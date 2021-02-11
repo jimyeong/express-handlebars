@@ -1,4 +1,4 @@
-.gitignore
+
 .git
 node_modules
 .idea
