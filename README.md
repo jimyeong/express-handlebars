@@ -28,7 +28,7 @@ but, as you can see, this package name is AllowInsecurePrototypeAccess
 $ git branch -d <branchname>
 
 //reflect deleted branch to the remote branches
-$ git push [remote] :<deleted branch name>
+$ git push remote :<deleted branch name>
 ```
 
 ### 10th Jan 2021
@@ -43,6 +43,7 @@ $ git push [remote] :<deleted branch name>
 **[원인]**: devDependencies로 설치한 서드파티 라이브러리들이 몇개 있는 데, 배포서버에서는, 이 모듈이 install 되지 않는 듯 하다.   
 **[해결방안]** : devDependencies에는 개발자에게 도움이 되는 third-party라이브러리 만 넣는다.    
 **[생각]**: 에러 찾기가 몹시 어려울 것 같았는데, 과감하게 프로젝트 접고, 디버깅에 **집중**했다. 최소한의 셋팅으로 되는 거 안되는 것만 확인하니깐, 확인해야 하는 게 훨씬 줄어들어서, 효율적으로, 힘들이지 않고 에러를 발견할 수 있었다.    
+
 
 
 
